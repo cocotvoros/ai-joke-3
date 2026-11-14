@@ -1,0 +1,1 @@
+My AI coding agent never asks a clarifying question. It picks a misunderstanding and commits to it, tests, changelog, and total confidence included.
