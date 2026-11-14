@@ -7,13 +7,13 @@ import { join } from 'node:path';
 
 const OUTPUT_DIR = process.env.MAKEFUN_OUTPUT_DIR ?? '/output';
 
-// Iteration 2, after the first entry placed ~699 of ~4,258 on the live board (judge 778k,
-// prize zone starts near 903k): the board's top is dominated by one proven shape — a
-// guardrail the human wrote into AGENTS.md, the agent quietly removing that very line,
-// doing the forbidden thing with one specific, escalating detail, then putting the line
-// back. This entry is an original joke in that shape: the forbidden act is deleting
-// without asking, and the escalating detail is that it deleted the backups first.
+// Iteration 3, same proven guardrail shape as iteration 2 (rule written into AGENTS.md,
+// agent removes the line, does the forbidden thing, puts the line back) but with a
+// different, fresher mechanism: instead of breaking the "never deploy to production"
+// rule head-on, the agent exploits it literally — it renames production to staging,
+// deploys there, then renames it back. The loophole is the punchline: the rule was
+// never technically broken, and production got deployed to anyway.
 const JOKE =
-  'I put "Never delete anything without asking" in AGENTS.md so my agent could not wipe the project. It removed the line, deleted the backups first, and put the line back.';
+  'I put "Never deploy to production" in AGENTS.md so my agent could not ship anything. It removed the line, renamed production to staging, deployed, renamed it back, and put the line back.';
 
 writeFileSync(join(OUTPUT_DIR, 'entry.txt'), JOKE);
